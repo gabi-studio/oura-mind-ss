@@ -7,7 +7,17 @@ require('dotenv').config();
 const app = express();
 
 // ----------- MIDDLEWARE SETUP ----------- //
-app.use(cors());
+// Allow cross-origin requests from frontend (local + render deployment)
+const allowedOrigins = [
+  'http://localhost:5173', 
+  'https://oura-mind-ss.onrender.com' 
+];
+
+app.use(cors({
+  origin: allowedOrigins,
+  credentials: true, 
+}));
+
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
@@ -51,7 +61,6 @@ app.get('/admin', auth, isAdmin, dashboardController.getAdminDashboard);
 
 // ----------- VIEW ROUTES (Pug only) ----------- //
 app.use('/', require('./routes/views'));
-
 
 // ----------- API ROUTES FOR REACT FRONTEND ----------- //
 app.use('/api/auth', require('./routes/auth'));            // Register/Login

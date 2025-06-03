@@ -24,12 +24,14 @@ async function register(req, res) {
   try {
     const { user, token } = await authService.registerUser({ name, email, password, role });
 
+    // https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-cookie-same-site-00#section-4.1.1
+    // Set the authentication token in a secure, HTTP-only cookie
     res
       .cookie('token', token, {
         httpOnly: true,
-        maxAge: 24 * 60 * 60 * 1000,
-        secure: process.env.NODE_ENV === 'production',
-        sameSite: 'lax'
+        secure: process.env.NODE_ENV === 'production', 
+        sameSite: process.env.NODE_ENV === 'production' ? 'None' : 'Lax',
+        maxAge: 7 * 24 * 60 * 60 * 1000, 
       })
       .status(201)
       .json({
