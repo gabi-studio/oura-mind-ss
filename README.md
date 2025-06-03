@@ -58,9 +58,9 @@ Current API routes for Oura Mind Journal:
 
 ## Dependencies notes:
 
-[ibm-watson](https://www.npmjs.com/package/ibm-watson)
-[jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken)
-[dotenv](https://www.npmjs.com/package/dotenv)
-[cors](https://www.npmjs.com/package/cors)
-[bcrypt](https://www.npmjs.com/package/bcrypt)
-[body-parser](https://www.npmjs.com/package/body-parser)
+- [ibm-watson](https://www.npmjs.com/package/ibm-watson)
+- [jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken)
+- [dotenv](https://www.npmjs.com/package/dotenv)
+- [cors](https://www.npmjs.com/package/cors)
+- [bcrypt](https://www.npmjs.com/package/bcrypt)
+- [body-parser](https://www.npmjs.com/package/body-parser)
