@@ -55,8 +55,6 @@ app.use('/', require('./routes/tools'));
 // Auth views (Pug-based)
 app.get('/login', (req, res) => res.render('login'));
 app.get('/register', (req, res) => res.render('register'));
-app.post('/login', authController.login);
-app.post('/register', authController.register);
 app.get('/logout', (req, res) => {
   res.clearCookie('token');
   res.redirect('/login');

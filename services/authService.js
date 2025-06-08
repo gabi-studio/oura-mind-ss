@@ -27,7 +27,19 @@ async function registerUser({ name, email, password, role }) {
 // Log in an existing user
 async function loginUser({ email, password }) {
   const user = await User.findByEmail(email);
-  if (!user || !(await bcrypt.compare(password, user.password))) {
+  console.log('Trying login for:', email);
+  if (!user) {
+    console.log('No user found');
+    throw new Error('Invalid email or password.');
+  }
+
+  console.log('User found:', user.email);
+
+  const match = await bcrypt.compare(password, user.password);
+  console.log('Password match result:', match);
+
+  if (!match) {
+    console.log('Password mismatch');
     throw new Error('Invalid email or password.');
   }
 
@@ -37,8 +49,10 @@ async function loginUser({ email, password }) {
     { expiresIn: '1d' }
   );
 
+  console.log('Login successful for', user.email);
   return { user, token };
 }
+
 
 module.exports = {
   registerUser,

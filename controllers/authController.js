@@ -55,6 +55,7 @@ async function register(req, res) {
 // If successful, responds with a token and user info
 // If an error occurs, responds with a 400 status and error message
 async function login(req, res) {
+  console.log('[LOGIN] Body received:', req.body);
   const email = req.body.email?.trim().toLowerCase();
   const password = req.body.password;
 
@@ -84,7 +85,7 @@ async function login(req, res) {
 
   } catch (err) {
     console.error('Login error:', err);
-    res.status(400).json({ error: err.message });
+    res.status(400).json({ error: err.message || "Login failed." });
   }
 }
 
