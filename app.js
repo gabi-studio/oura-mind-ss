@@ -9,7 +9,7 @@ const app = express();
 // ----------- MIDDLEWARE SETUP ----------- //
 // Allow cross-origin requests from frontend (local + render deployment)
 const allowedOrigins = [
-  'http://localhost:5173', 
+  'http://localhost:5174', // temporary local Vite server
   'https://oura-mind-ss.onrender.com' 
 ];
 
