@@ -8,7 +8,8 @@ const publicRoutes = require('./routes/public');
 const app = express();
 const allowedOrigins = [
   'http://localhost:5173',
-  'https://oura-mind-cs.vercel.app'
+  'https://oura-mind-cs.vercel.app',
+  'https://oura-mind-journal.netlify.app'
 ];
 
 // For me to check requests on the server
